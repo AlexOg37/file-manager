@@ -1,0 +1,27 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.ant-layout-header {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ant-layout-header h1 {
+  margin: 0;
+  color: #1677ff;
+}
+
+.ant-breadcrumb {
+  font-size: 16px;
+}
+
+.ant-table-wrapper {
+  margin-top: 16px;
+}
+
+.ant-spin-nested-loading {
+  min-height: 200px;
+}
