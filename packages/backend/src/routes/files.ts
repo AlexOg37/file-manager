@@ -9,7 +9,7 @@ const router = new Router({
 const fileService = new FileService()
 
 // Get directory contents
-router.get('/:path*', async (ctx: Context) => {
+router.get('/list/:path*', async (ctx: Context) => {
   try {
     const fullPath = (ctx.params.path || '') + (ctx.params[0] || '')
     const contents = await fileService.getDirectoryContents(fullPath || '/')

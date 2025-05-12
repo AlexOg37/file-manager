@@ -11,7 +11,7 @@ export interface FileItem {
 
 export const api = {
   async listFiles(path: string = '/'): Promise<FileItem[]> {
-    const response = await axios.get(`${API_BASE_URL}${path}`);
+    const response = await axios.get(`${API_BASE_URL}/list${path}`);
     return response.data;
   },
 
