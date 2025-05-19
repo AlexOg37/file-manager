@@ -11,7 +11,7 @@
     "rootDir": ".",
     "moduleResolution": "node",
     "types": ["node", "jest"],
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types", "../../node_modules/@types"],
   },
   "include": ["src/**/*", "tests/**/*"],
   "exclude": ["node_modules", "dist"]

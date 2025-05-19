@@ -15,7 +15,7 @@ export interface FileContent {
 }
 
 export class FileService {
-  private basePath: string
+  private readonly basePath: string
 
   constructor() {
     // In production, this should be configured via environment variables
@@ -23,11 +23,12 @@ export class FileService {
   }
 
   private async validatePath(requestedPath: string): Promise<string> {
-    const normalizedPath = path.normalize(requestedPath).replace(/^(\.\.(\/|\\|$))+/, '')
-    const fullPath = path.join(this.basePath, normalizedPath)
+    const normalizedPath = path.normalize(requestedPath)
+    const fullPath = path.resolve(this.basePath, normalizedPath)
     
     // Ensure the path is within the allowed directory
-    if (!fullPath.startsWith(this.basePath)) {
+    const relativePath = path.relative(this.basePath, fullPath)
+    if (relativePath.startsWith('..') || path.isAbsolute(relativePath)) {
       throw new Error('Access denied: Path is outside of allowed directory')
     }
 

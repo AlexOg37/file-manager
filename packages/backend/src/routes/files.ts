@@ -11,7 +11,7 @@ const fileService = new FileService()
 // Get directory contents
 router.get('/list/:path*', async (ctx: Context) => {
   try {
-    const fullPath = (ctx.params.path || '') + (ctx.params[0] || '')
+    const fullPath = (ctx.params.path ?? '') + (ctx.params[0] ?? '')
     const contents = await fileService.getDirectoryContents(fullPath || '/')
     ctx.type = 'application/json'
     ctx.body = JSON.stringify(contents)
@@ -25,7 +25,7 @@ router.get('/list/:path*', async (ctx: Context) => {
 // Download file
 router.get('/download/:path*', async (ctx: Context) => {
   try {
-    const fullPath = ctx.params.path + (ctx.params[0] || '')
+    const fullPath = ctx.params.path + (ctx.params[0] ?? '')
     const file = await fileService.getFile(fullPath)
     ctx.type = 'application/octet-stream'
     ctx.body = file.content
